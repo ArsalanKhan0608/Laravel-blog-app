@@ -10,5 +10,8 @@ Route::post('/posts', [PostController::class, 'store'])->name('posts.store')->mi
 Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit')->middleware('auth');
 Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update')->middleware('auth');
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy')->middleware('auth');
-
+Route::get('/dashboard', function () {
+    // Replace this closure with your dashboard logic
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 require __DIR__.'/auth.php';
