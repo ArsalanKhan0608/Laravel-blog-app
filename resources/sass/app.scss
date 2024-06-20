@@ -1,0 +1,12 @@
+// Import Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Import Animate.css
+@import "../../node_modules/animate.css/animate.min.css";
+.card {
+    transition: transform 0.3s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
