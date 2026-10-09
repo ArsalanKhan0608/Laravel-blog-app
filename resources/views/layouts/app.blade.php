@@ -26,6 +26,9 @@
                         </li>
                     @else
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('profile.edit') }}">Profile</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Logout
@@ -41,6 +44,7 @@
     </nav>
 
     <div class="container mt-4">
+        {{ $slot ?? '' }}
         @yield('content')
     </div>
 

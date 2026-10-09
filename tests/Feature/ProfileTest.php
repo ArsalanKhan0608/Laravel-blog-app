@@ -18,7 +18,16 @@ class ProfileTest extends TestCase
             ->actingAs($user)
             ->get('/profile');
 
-        $response->assertOk();
+        $response->assertOk()
+            ->assertSee('Profile Information')
+            ->assertSee('Update Password');
+    }
+
+    public function test_guests_cannot_access_profile_routes(): void
+    {
+        $this->get('/profile')->assertRedirect('/login');
+        $this->patch('/profile', [])->assertRedirect('/login');
+        $this->delete('/profile', [])->assertRedirect('/login');
     }
 
     public function test_profile_information_can_be_updated(): void
